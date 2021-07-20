@@ -11,12 +11,13 @@ Usage:
 }
 cli_log "Starting installation of SLH"
 
-printf "%s\n" "Enter your apache document root"
+printf "Enter your apache document root: "
 read APACHE_DOCROOT
-printf "%s\n" "Enter your MySQL username:"
+printf "Enter your MySQL username: "
 read MYSQL_USER
-printf "%s\n" "Enter your MySQL password (leave blank if not set):"
+printf "Enter your MySQL password (leave blank if not set): "
 read -s MYSQL_PW
+printf "%s\n"
 
 touch -a "$SLHCLI_SRC/config.php"
 
