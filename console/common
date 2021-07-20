@@ -1,0 +1,8 @@
+#!/bin/sh
+cli_log() {
+  GREEN='\033[0;32m'
+  YELLOW='\033[0;33m'
+  NC='\033[0m' # No Color
+  timestamp=$(date -u +"%Y-%m-%d %H:%M:%S")
+  echo "${YELLOW}$timestamp${NC} $1"
+}

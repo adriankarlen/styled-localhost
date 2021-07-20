@@ -1,0 +1,33 @@
+#!/bin/sh
+set -e
+. "$SLHCLI_WORKDIR/common"
+
+cli_help_deploy() {
+    echo "
+Command: install
+Usage: 
+  install"
+    exit 1sli
+}
+cli_log "Starting installation of SLH"
+
+printf "%s\n" "Enter your apache document root"
+read APACHE_DOCROOT
+printf "%s\n" "Enter your MySQL username:"
+read MYSQL_USER
+printf "%s\n" "Enter your MySQL password (leave blank if not set):"
+read -s MYSQL_PW
+
+touch -a "$SLHCLI_SRC/config.php"
+
+cat <<EOF >config.php
+<?php
+array(
+    'slh_src' => '$SLHCLI_SRC',
+    'apache_docroot' => '$APACHE_DOCROOT',
+    'mysql_username' => '$MYSQL_USER',
+    'mysql_password' => '$MYSQL_PW'
+);
+EOF
+
+cli_log "Installation of SLH completed successfully"

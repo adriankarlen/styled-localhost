@@ -1,0 +1,463 @@
+/* Custom styles for localhost */
+
+/** 
+ * Proterties
+ */
+:root {
+    --main-bg: #1f2430;
+    --main-fg: #ffcc66;
+    --main-text: #fdfdfd;
+    --tooltip-bg: #232834;
+    --tooltip-text: #5c6773;
+    --fg-hover: #ffd580;
+    --active: #707a8c;
+    --projects: #707a8c66;
+    --projects-hover: #fdfdfd55;
+    --border: #101521;
+    --list-hover: #101521;
+    --shadow: #141921;
+}
+
+html {
+    font-family: 'Fira Code';
+}
+
+body {
+    font-family: 'Roboto';
+    background-color: var(--main-bg);
+    margin: 0;
+    text-align: left;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+.wrapper-inner {
+    background-color: var(--main-bg);
+    border-radius: 15px 0 0 15px;
+    height: 96vh;
+    /* box-shadow: 0px 0px 6px 0px var(--main); */
+    grid-area: main;
+}
+
+@media screen and (min-width: 50em) {
+    .wrapper-inner {
+        padding: 0 1em 0 2em;
+    }
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 3em auto 30em;
+    grid-template-rows: auto;
+    grid-template-areas: 'sidebar main todo';
+    margin: 2vh 2vh 0 0;
+}
+
+.wrapper-inner::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.heading {
+    font-weight: bold;
+    display: block;
+    font-size: 2em;
+    font-family: Fira Code;
+    text-align: center;
+    text-decoration: none;
+    color: var(--main-text);
+    padding: 1em 0 0 0;
+    width: 100%;
+    margin: 0;
+}
+
+/* ***************************************************************
+ *  Navigation
+ * ************************************************************* */
+
+.projekte {
+    background-color: var(--main-bg);
+    grid-area: sidebar;
+}
+
+.projekte-link {
+    margin: 2em 0px;
+    display: block;
+    position: relative;
+    text-decoration: none;
+    text-align: center;
+    color: var(--projects);
+}
+
+.image-navbar {
+    font-size: 1.5rem;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.tooltip {
+    visibility: hidden;
+    border: 1px solid var(--border);
+    background-color: var(--tooltip-bg);
+    color: var(--tooltip-text);    
+    width: 90px;
+    margin: 7px;
+    padding: 5px 0;
+    text-align: center;
+    font-size: 0.8em;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -0.6em;
+    left: 105%;
+    box-shadow: 0px 0px 2px var(--shadow);
+    -webkit-box-shadow: -0px 0px 2px var(--shadow);
+    -moz-box-shadow: 0px 0px 2px var(--shadow);
+}
+.tooltip:before{
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: -4px;
+    top: 10px;
+    width: 0.5em;
+    height: 0.5em;
+    border-color: var(--border);
+    border-width: 1px;
+    border-style: none none solid solid;
+    background-color: var(--tooltip-bg);
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+}
+
+.projekte-link:hover .tooltip {
+    visibility: visible;
+}
+
+.projekte-link.active {
+    /* color: var(--main-fg) !important; */
+    border-left: 2px solid var(--active);
+}
+
+.projekte-link:hover {
+    color: var(--projects-hover);
+    /* border: 5px solid transparent; */
+}
+
+.projekte-link:focus {
+    color: var(--main-fg);
+    border-radius: 6px;
+}
+
+.link-ext {
+    /* display: inline-block; */
+    color: var(--main-text);
+    text-decoration: none;
+    padding: 0.5em 1.5em;
+    margin: 0.5em 0;
+    float: right;
+    background-color: var(--main-fg);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+}
+
+.link-ext:hover {
+    background-color: var(--fg-hover);
+}
+
+hr {
+    height: 0.1em;
+    background-color: var(--active);
+    border: none;
+}
+
+/* ***************************************************************
+ *  Projektliste
+ * ************************************************************* */
+
+.list {
+    font-size: 1.2rem;
+    list-style: none;
+    padding-left: 0;
+    width: 100%;
+    float: left;
+    margin: 0;
+    overflow-y: scroll;
+    height: 86vh;
+}
+
+.list-item {
+    display: block;
+    padding: 1em 0;
+}
+
+.list-item:hover {
+    border-radius: 6px;
+    background-color: var(--list-hover);
+}
+
+.link {
+    display: inline-block;
+    padding: 0.4em 0.4em;
+    text-decoration: none;
+    color: var(--main-text);
+}
+
+.link:hover {
+    color: var(--main-fg);
+}
+
+.link-btn {
+    font-size: 1rem;
+    color: var(--border);
+    text-decoration: none;
+    font-family: 'Product Sans Regular';
+    padding: 0.5em 1.5em;
+    margin-right: 0.4em;
+    float: right;
+    background-color: var(--main-fg);
+    border: var(--border);
+    border-radius: 2px;
+}
+
+.link-btn:hover {
+    background-color: var(--fg-hover);
+}
+
+/* ***************************************************************
+ *  Links-Sidebar
+ *
+ * ************************************************************* */
+
+.sites,
+.todos {
+    font-size: 1rem;
+    padding: 0 1em;
+    grid-area: todo;
+    background-color: var(--main-bg);
+    border-radius: 0 15px 15px 0;
+    overflow-y: scroll;
+    height: 96vh;;
+}
+
+.todos-inner {
+    /* overflow-y: scroll; */
+    height: 86vh;
+}
+
+.title {
+    font-size: 3rem;
+    color: var(--main-text);
+    font-family: 'Product Sans Regular';
+    margin: 1rem 0 1rem 0;
+    box-shadow: 0 2px 2px -2px var(--shadow);
+}
+
+.sites-items,
+.todos-items {
+    list-style: none;
+    padding: 1em 0 0 0;
+}
+
+.sites-item {
+    display: block;
+    font-size: 1rem;
+    border-bottom: 2px solid var(--main-text);
+}
+
+.sites-item:last-child {
+    border-bottom: 0;
+}
+
+.sites-link {
+    display: inline-block;
+    padding: 1.5em 0;
+    text-decoration: none;
+    color: var(--main-fg);
+}
+
+.sites-link:hover {
+    color: var(--fg-hover);
+}
+
+.sites-link-desc {
+    color: var(--main-text);
+    display: inline-block;
+    font-size: 0.8rem;
+    margin-top: 0.3em;
+}
+
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--main-text);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #5c6773;
+    margin: 3px;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: var(--active);
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: var(--active);
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: '';
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--border);
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.close {
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--main-text);
+    line-height: 25px;
+}
+
+.close:hover {
+    color: #ff3333;
+    cursor: pointer;
+}
+
+.todo-grid {
+    display: grid;
+    grid-template-columns: auto 25px;
+}
+
+.todo-grid:hover {
+    border-radius: 2px;
+    background-color: var(--list-hover);
+}
+
+.todo-submit-grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    /* position: absolute; */
+    width: 100%;
+    /* bottom: 0; */
+}
+
+#todo-input {
+    font-size: 14px;
+    background: var(--main-text);
+    border: none;
+    outline: none;
+    caret-color: var(--main-bg);
+    color: var(--main-bg);
+}
+
+#todo-submit {
+    color: var(--border);
+    text-decoration: none;
+    font-size: 14px;
+    font-family: 'Product Sans Regular';
+    background-color: var(--main-fg);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    margin: 0 0 0 0.5em;
+    outline: none;
+}
+
+#todo-submit:hover {
+    cursor: pointer;
+    background-color: var(--fg-hover);
+}
+
+#todo-submit:focus {
+    background-color: var(--fg-hover);
+}
+
+::-webkit-scrollbar {
+    height: 6px !important;
+    width: 6px !important;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent !important;
+}
+
+/*Round corner scrollbar*/
+
+::-webkit-scrollbar-thumb {
+    /* background-color: #fdfdfd22; */
+    border-radius: 3px !important;
+    height: 10vh;
+}
+
+/*Hide top and bottom buttons of scrollbar. Who uses those, lol*/
+
+::-webkit-scrollbar-button {
+    display: none !important;
+}
+
+@font-face {
+    font-family: 'Product Sans Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Product Sans Regular'), url('src/fonts/ProductSans-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Product Sans Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Product Sans Bold'), url('src/fonts/ProductSans-Bold.woff') format('woff');
+}

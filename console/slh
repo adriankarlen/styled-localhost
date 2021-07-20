@@ -1,0 +1,30 @@
+#!/bin/sh
+
+set -e
+export SLHCLI_WORKDIR=$(cd $(dirname $0) && pwd)
+. "$SLHCLI_WORKDIR/common"
+
+export SLHCLI_SRC="$(dirname "$SLHCLI_WORKDIR")"
+
+cli_help() {
+    cli_name=${0##*/}
+    echo "$cli_name
+styled-localhost cli
+Version: $(cat $SLHCLI_WORKDIR/VERSION)
+Usage: $cli_name [command]
+Commands:
+  --install -i    Install
+  *               Help
+"
+    exit 1
+}
+
+case "$1" in
+-i | --install)
+
+    "$SLHCLI_WORKDIR/commands/install" "$2"  | tee -ia "$SLHCLI_WORKDIR/deploy_${2}.log"
+    ;;
+*)
+    cli_help
+    ;;
+esac
