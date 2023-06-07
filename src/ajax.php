@@ -1,6 +1,10 @@
 <?php
+/**
+ * If you use a password to your local mysql-setup, store it somewhere else and secure.
+ * This requires you to have an local mysql-db called improved_localhost created
+ */
 if ($_POST['action'] == 'delete_todo') {
-    $db = mysqli_connect('localhost', 'username', 'knackapå', 'improved_localhost');
+    $db = mysqli_connect('localhost', '>>insert username here<<', '>>insert password here<<', 'styled_localhost');
     if (!$db) {
         throw new Exception("Error Processing Request", 1);
     }
@@ -10,7 +14,7 @@ if ($_POST['action'] == 'delete_todo') {
 }
 
 if ($_POST['action'] == 'update_done') {
-    $db = mysqli_connect('localhost', 'username', 'knackapå', 'improved_localhost');
+    $db = mysqli_connect('localhost', '>>insert username here<<', '>>insert password here<<', 'styled_localhost');
     if (!$db) {
         throw new Exception("Error Processing Request", 1);
     }
@@ -20,7 +24,7 @@ if ($_POST['action'] == 'update_done') {
 }
 
 if ($_POST['action'] == 'add_todo') {
-    $db = mysqli_connect('localhost', 'username', 'knackapå', 'improved_localhost');
+    $db = mysqli_connect('localhost', '>>insert username here<<', '>>insert password here<<', 'styled_localhost');
     if (!$db) {
         throw new Exception("Error Processing Request", 1);
     }
